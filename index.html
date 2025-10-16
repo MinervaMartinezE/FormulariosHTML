@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Formularioshtml</title>
+  </head>
+
+  <body>
+    <main>
+      <form action="user.html" method="POST">
+        <h1>Create Account</h1>
+
+        <fieldset class="form-group">
+          <legend>Account Information</legend>  
+
+          <div class="form-fields">  
+            <label for="fullname">Full Name</label>
+            <input type="text" id="fullname" name="fullname" placeholder="Enter your full name" required />
+
+            <label for="email">E-mail Address</label>
+            <input type="email" id="email" name="email" placeholder="Enter your email address" required />
+
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" placeholder="Create a password" required />
+
+            <label for="confirm-password">Re-Password</label>
+            <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirm your password" required />
+
+            <section class="select-country">
+              <label for="country">Country</label>
+              <select id="country" name="country" required>
+                <option value="" disabled selected>Select your country</option>
+                <option value="es">Spain</option>
+                <option value="us">United States</option>
+                <option value="fr">France</option>
+                <option value="de">Germany</option>
+              </select>
+            </section>
+          </div>
+        </fieldset>
+
+        <section class="check-rules">
+          <input type="checkbox" id="agree" name="agree" required />
+          <label for="agree">I agree to the <a href="#">rules</a></label>
+        </section>
+
+        <section class="button">
+          <button type="submit">Create Account</button>
+        </section>
+      </form>
+    </main>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
