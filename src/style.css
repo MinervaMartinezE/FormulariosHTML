@@ -40,7 +40,6 @@ h1{
   border-radius: 6px;
   max-width: 650px; 
   font-weight: lighter;
-   
 }
 .check-rules, .button{
     margin: 0.625rem;
@@ -69,7 +68,7 @@ input, select {
   outline: none; 
   color:rgb(144, 144, 149);
 }
-input::placeholder, textarea::placeholder, select{
+input::placeholder, textarea::placeholder{
   color:rgb(226, 226, 232);
   font-weight: lighter;
   font-style: italic;
@@ -81,4 +80,10 @@ input:focus, select:focus {
     display: flex;
     flex-direction: column;
     gap:0.5rem;
+}
+input.valid, select.valid{
+  border: 2px solid rgb(153, 223, 48);
+}
+input.invalid, select.invalid{
+  border: 2px solid rgb(240, 61, 61);
 }
