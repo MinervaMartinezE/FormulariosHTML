@@ -1,0 +1,84 @@
+/*Declaración de variables para todo el html*/
+:root {
+  --primary-color: #389891e2;
+  --background: hsl(169, 33%, 94%);
+  --text-color: #333;
+  --font-base: 'Montserrat', sans-serif;
+  --font-secondary: 'Open Sans', sans-serif;
+  --font-size-base: clamp(0.8rem, 1.5vw, 1rem);
+  --font-size-title: clamp(0.9rem, 3vw, 2rem);
+  --line-height-base: 1.6;
+  --error-color:red;
+}
+html, body{
+    background-color: var(--background);
+    font-size: var(--font-size-base);
+    font-family: var(--font-base);
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+h1{
+    font-size: var(--font-size-title);
+}
+.form-container{
+    border-radius: 6px;
+    background-color: white;
+    max-width: 70vw;
+    min-width: 15vw;
+    padding: 1rem 3rem;
+    width: 100%;
+}
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;           
+  margin-bottom: 3.3rem; 
+  border-radius: 6px;
+  max-width: 650px; 
+  font-weight: lighter;
+   
+}
+.check-rules, .button{
+    margin: 0.625rem;
+    justify-content: flex-start;
+}
+.button{
+    margin-top: 2rem;
+    text-align: center;
+}
+.button button{
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    border-radius: 6px;
+    background-color: white;
+}
+label{
+    font-weight: bolder;
+    color: var(--primary-color);
+}
+input, select {
+  border: none; 
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+  padding: 0.6rem;
+  border-radius: 4px;
+  font-size: 1rem;
+  outline: none; 
+  color:rgb(144, 144, 149);
+}
+input::placeholder, textarea::placeholder, select{
+  color:rgb(226, 226, 232);
+  font-weight: lighter;
+  font-style: italic;
+}
+input:focus, select:focus {
+  box-shadow: 0 0 0 3px rgba(129, 183, 175, 0.3);
+}
+.select-country{
+    display: flex;
+    flex-direction: column;
+    gap:0.5rem;
+}
