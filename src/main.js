@@ -4,8 +4,107 @@ import './style.css';
 const isFormPage = !!document.getElementById("fullname");
 const isResultPage = !!document.getElementById("userTableBody");
 
-
 if (isFormPage){
+
+//Select Country
+const countries = [
+  { code: "af", name: "Afghanistan" },
+  { code: "al", name: "Albania" },
+  { code: "dz", name: "Algeria" },
+  { code: "ar", name: "Argentina" },
+  { code: "au", name: "Australia" },
+  { code: "at", name: "Austria" },
+  { code: "bd", name: "Bangladesh" },
+  { code: "be", name: "Belgium" },
+  { code: "br", name: "Brazil" },
+  { code: "ca", name: "Canada" },
+  { code: "cl", name: "Chile" },
+  { code: "cn", name: "China" },
+  { code: "co", name: "Colombia" },
+  { code: "hr", name: "Croatia" },
+  { code: "cz", name: "Czech Republic" },
+  { code: "dk", name: "Denmark" },
+  { code: "eg", name: "Egypt" },
+  { code: "ee", name: "Estonia" },
+  { code: "fi", name: "Finland" },
+  { code: "fr", name: "France" },
+  { code: "de", name: "Germany" },
+  { code: "gr", name: "Greece" },
+  { code: "hu", name: "Hungary" },
+  { code: "in", name: "India" },
+  { code: "id", name: "Indonesia" },
+  { code: "ie", name: "Ireland" },
+  { code: "il", name: "Israel" },
+  { code: "it", name: "Italy" },
+  { code: "jp", name: "Japan" },
+  { code: "kr", name: "South Korea" },
+  { code: "mx", name: "Mexico" },
+  { code: "ma", name: "Morocco" },
+  { code: "nl", name: "Netherlands" },
+  { code: "nz", name: "New Zealand" },
+  { code: "ng", name: "Nigeria" },
+  { code: "no", name: "Norway" },
+  { code: "pk", name: "Pakistan" },
+  { code: "pe", name: "Peru" },
+  { code: "ph", name: "Philippines" },
+  { code: "pl", name: "Poland" },
+  { code: "pt", name: "Portugal" },
+  { code: "ro", name: "Romania" },
+  { code: "ru", name: "Russia" },
+  { code: "sa", name: "Saudi Arabia" },
+  { code: "rs", name: "Serbia" },
+  { code: "sg", name: "Singapore" },
+  { code: "sk", name: "Slovakia" },
+  { code: "si", name: "Slovenia" },
+  { code: "za", name: "South Africa" },
+  { code: "es", name: "Spain" },
+  { code: "se", name: "Sweden" },
+  { code: "ch", name: "Switzerland" },
+  { code: "th", name: "Thailand" },
+  { code: "tr", name: "Turkey" },
+  { code: "ua", name: "Ukraine" },
+  { code: "gb", name: "United Kingdom" },
+  { code: "us", name: "United States" },
+  { code: "ve", name: "Venezuela" },
+  { code: "vn", name: "Vietnam" },
+];
+
+const customSelect = document.getElementById("custom-select");
+const countryList = document.getElementById("countryList");
+const selectedOption = customSelect.querySelector(".selected-option");
+const hiddenInput = document.getElementById("country");
+
+selectedOption.innerHTML = `<span>Select your country</span>`;
+selectedOption.classList.add("placeholder");
+
+countries.forEach((item) => {
+  const li = document.createElement("li");
+  li.innerHTML = `<span class="fi fi-${item.code}"></span> ${item.name}`;
+  li.dataset.value = item.code;
+
+  li.addEventListener("click", (event) => {
+    event.stopPropagation();
+
+    selectedOption.innerHTML = li.innerHTML;
+    selectedOption.classList.remove("placeholder");
+    hiddenInput.value = item.code;
+    customSelect.classList.remove("open");
+    hiddenInput.dispatchEvent(new Event("change"));
+
+  });
+  countryList.appendChild(li);
+});
+
+customSelect.addEventListener("click", () => {
+  customSelect.classList.toggle("open");
+});
+
+document.addEventListener("click", (e) => {
+  if (!customSelect.contains(e.target)) {
+    customSelect.classList.remove("open");
+  }
+});
+
 // Declaración de variables
 const nameInput = document.getElementById("fullname");
 const emailInput = document.getElementById("email");
@@ -124,9 +223,17 @@ window.addEventListener('DOMContentLoaded', () => {
 
   saveUser(newUser);
 
+  if (window.history.replaceState) { //Se añade para evitar duplicación de datos en la tabla. 
+    const url = window.location.origin + window.location.pathname;
+    window.history.replaceState({}, document.title, url);
+  }
+
   const usersFromStorage = getUserLocal();
   console.log('Users in localStorage:', usersFromStorage);
 
   renderUsersTable();
 })
 }
+//Función para borrar usuarios
+
+

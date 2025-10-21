@@ -4,15 +4,17 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Formularioshtml</title>
+  
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/6.6.6/css/flag-icons.min.css"/>
   </head>
 
   <body>
     <main>
+      <div class="form-container">
       <form action="result.html" method="GET">
         <h1>Create Account</h1>
-
-        <fieldset class="form-container">
-          <legend>Account Information</legend>  
 
           <div class="form-group">  
             <label for="fullname">Full Name</label>
@@ -34,19 +36,15 @@
             <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirm your password" required />
           </div>
 
-          <div class="form-group"> 
-            <section class="select-country">
-              <label for="country">Country</label>
-              <select id="country" name="country" required>
-                <option value="" disabled selected>Select your country</option>
-                <option value="es">Spain</option>
-                <option value="us">United States</option>
-                <option value="fr">France</option>
-                <option value="de">Germany</option>
-              </select>
-            </section>
+          <div class="custom-select-wrapper">
+            <div id="custom-select" class="custom-select">
+             <div class="selected-option">
+              <span>Select your country</span>
+            </div>
+            <ul id="countryList" class="options-list"></ul>
           </div>
-        </fieldset>
+          <input type="hidden" id="country" name="country" required />
+          </div>
 
         <section class="check-rules">
           <input type="checkbox" id="agree" name="agree" required />
@@ -57,6 +55,7 @@
           <button type="submit" id="button">Create Account</button>
         </section>
       </form>
+    </div>
     </main>
 
     <script type="module" src="/src/main.js"></script>
