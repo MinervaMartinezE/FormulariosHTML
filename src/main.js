@@ -182,27 +182,28 @@ countryInput.addEventListener("change", () => validateField(countryInput));
 function getUserData() {
     const params = new URLSearchParams(window.location.search);
     return {
-        name: params.get('fullname') || '',
-        email: params.get('email') || '',
-        password: params.get('password') || '',
-        country: params.get('country') || '',
+        name: params.get('fullname') || null,
+        email: params.get('email') || null,
+        password: params.get('password') || null,
+        country: params.get('country') || null,
     };
 }
 
 // Guardar un usuario en localStorage
 function saveUser(user) {
+  if (!user.name || !user.email){
+    return;
+  }
     const users = JSON.parse(localStorage.getItem('users')) || [];
 
     users.push(user);
     localStorage.setItem('users', JSON.stringify(users));
 }
-
 function getUserLocal() {
     return JSON.parse(localStorage.getItem('users')) || [];
 }
-
 function renderUsersTable() {
-    const users = getUserLocal();
+    const users = getUserLocal().filter(u => u.name && u.email);
     const tbody = document.getElementById('userTableBody');
     tbody.innerHTML = '';
 
@@ -234,6 +235,6 @@ window.addEventListener('DOMContentLoaded', () => {
   renderUsersTable();
 })
 }
-//Función para borrar usuarios
+
 
 
